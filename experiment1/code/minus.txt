@@ -2,7 +2,7 @@
 N: .word 5
 .text
 main:
-ADDIU $r1, $r0, A
+ADDIU $r1, $r0, N
 LW $r2, 0($r1)
 ADDIU $r2, $r2, -1
 SW $r2,0($r1)

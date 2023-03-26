@@ -67,7 +67,7 @@
 %%%%%%%%%%%%%
 \newcommand{\StudentNumber}{22920202204622}  % Fill your student number here
 \newcommand{\StudentName}{熊恪峥}  % Replace your name here
-\newcommand{\PaperTitle}{实验（一）}  % Change your paper title here
+\newcommand{\PaperTitle}{实验（一）MIPS指令系统和MIPS体系结构}  % Change your paper title here
 \newcommand{\PaperType}{计算机系统结构实验} % Replace the type of your report here
 \newcommand{\Date}{2023年3月8日}
 \newcommand{\College}{信息学院}
@@ -170,6 +170,15 @@
 
 \begin{spacing}{1.2}
 
+\section{实验目的}
+
+\begin{enumerate}
+	\item 了解和熟悉指令级模拟器
+	\item 熟练掌握MIPSsim模拟器的操作和使用方法
+	\item 熟悉MIPS指令系统及其特点，加深对MIPS指令操作语义的理解
+	\item 熟悉MIPS体系结构
+\end{enumerate}
+
 \section{实现阶乘}
 
 \subsection{实现思路}
@@ -178,39 +187,63 @@
 循环计数，循环将\texttt{r2}与\texttt{r3}相乘，然后将结果存入\texttt{r2}中，然后
 递减\texttt{r3}，直到\texttt{r3}为1，循环结束后，\texttt{r2}中的值即为阶乘的结果。
 
-具体实现如~\ref{code:fact}。
-
+具体实现如代码~\ref{code:fact}。
 \begin{listing}[htb]
 	\caption{阶乘代码}
 	\label{code:fact}
 	\inputminted{nasm}{code/fact.txt}
 \end{listing}
 
+运行结果如图~\ref{fig:fact}，使用$X=5$进行计算，结果存储在\texttt{R2}中，为$120$。
+可见程序是正确的。
+\begin{figure}[htb]
+	\centering
+	\includegraphics[width=0.4\textwidth]{images/fact.png}
+	\caption{阶乘运行结果}
+	\label{fig:fact}
+\end{figure}
+
 \section{计算$(X-Y) \times 2 - (X+Y)\div 8$}
 
 \subsection{实现思路}
 
 题目要求不使用乘除指令。观察题目要求，可以发现2和8都是2的幂，因此可以使用移位
-指令代替乘除指令。具体实现如~\ref{code:mul}。
-
+指令代替乘除指令。具体实现如代码~\ref{code:mul}。
 \begin{listing}[htb]
 	\caption{计算代码}
 	\label{code:mul}
 	\inputminted{nasm}{code/mul.txt}
 \end{listing}
 
+运行结果如图~\ref{fig:mul}，使用$X=5,Y=3$进行计算，结果存储在\texttt{R6}中，为$3$。
+可见程序是正确的。
+\begin{figure}[ht]
+	\centering
+	\includegraphics[width=0.8\textwidth]{images/mul.png}
+	\caption{计算结果}
+	\label{fig:mul}
+\end{figure}
+
+
 \section{写入内存}
 
 \subsection{实现思路}
 
 为了实现将计算结果写入内存，需要使用\texttt{SW}指令将寄存器中的值写入内存中。
-具体实现如~\ref{code:minus}。
-
+具体实现如代码~\ref{code:minus}。
 \begin{listing}[htb]
 	\caption{计算并写入内存}
 	\label{code:minus}
 	\inputminted{nasm}{code/minus.txt}
 \end{listing}
+
+运行结果如图~\ref{fig:minus}，内存单元N中的值初始化为5，程序执行完成后变成4。
+\begin{figure}[ht]
+	\centering
+	\includegraphics[width=0.8\textwidth]{images/minus.png}
+	\caption{计算并写入内存}
+	\label{fig:minus}
+\end{figure}
 
 \section{实验总结}
 
